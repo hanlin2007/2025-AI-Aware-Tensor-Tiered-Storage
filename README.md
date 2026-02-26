@@ -1,2 +1,2 @@
 # 2025-AI-Aware-Tensor-Tiered-Storage
-This is a github archive, containing my entry for the 2025 Huawei Cloud Development/Information Storage Competition — a Tensor-based Intelligent Semantic Hierarchical Storage System. 
+This is a supplementary archive for my GitHub repository, containing my entry for the 2025 Huawei Cloud Development/Information Storage Competition — a Tensor-based Intelligent Semantic Hierarchical Storage System. Built with Python, Redis, MinIO, FUSE, and other tools, it integrates components such as a semantic prefetcher, strategy engine, storage manager, compression module, real model loader, performance monitor, workload generator, evaluator, and FUSE interface to enable intelligent hierarchical storage and end-to-end evaluation.
