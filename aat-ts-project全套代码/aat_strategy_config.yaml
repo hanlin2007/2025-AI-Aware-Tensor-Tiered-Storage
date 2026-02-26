@@ -1,0 +1,32 @@
+default_mode: "performance"
+
+tier_selection:
+  embedding: "hot"
+  layer0: "hot"
+  layer1: "hot"
+  layer2: "warm"
+  layer3: "cold"
+  output: "hot"
+  config: "cold"
+  checkpoint: "cold"
+  other: "cold"
+
+compression:
+  enabled: true
+  min_size: 1024
+  algorithm: "gzip"
+
+cache_ttl:
+  hot: 300
+  warm: 1800
+  cold: 3600
+
+performance_weights:
+  access_frequency: 0.6
+  tensor_size: 0.2
+  layer_importance: 0.2
+
+prefetch:
+  enabled: true
+  lookahead: 2
+  max_concurrent: 3
