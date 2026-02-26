@@ -1,0 +1,295 @@
+lhl@lihanlin:~/aat-ts-project$ source venv/bin/activate
+(venv) lhl@lihanlin:~/aat-ts-project$ ./start_demo.sh
+🚀 启动 AAT-TS 演示环境...
+==========================================
+📋 启动流程开始...
+🧹 清理旧进程...
+[sudo] password for lhl: 
+1. 检查 Redis...
+✅ Redis 运行正常
+2. 启动 MinIO...
+⏳ 等待 MinIO 启动...
+   尝试 1/10...
+✅ MinIO 已就绪
+3. 准备挂载点...
+4. 启动 FUSE 文件系统...
+⏳ 等待 FUSE 启动...
+✅ FUSE 已就绪
+5. 验证服务状态...
+✅ Redis 运行正常
+✅ MinIO 运行正常
+✅ FUSE 运行正常
+
+🎉 AAT-TS 演示环境启动完成!
+==========================================
+📊 服务状态:
+   Redis: http://localhost:6379
+   MinIO: http://localhost:9001 (管理界面)
+   FUSE:  /mnt/aat (挂载点)
+
+🔧 可用命令:
+   运行测试: python aat_final_test.py
+   查看文件: ls /mnt/aat
+   停止服务: ./stop_demo.sh
+==========================================
+按回车键运行综合测试，或 Ctrl+C 退出...
+🧪 运行综合测试...
+AAT-TS 智能存储系统 - 最终综合测试
+基于真实BERT模型数据的性能验证
+============================================================
+2025-11-25 21:06:37,780 - AAT-StorageManagerV2 - INFO - Redis连接成功
+2025-11-25 21:06:37,789 - AAT-StorageManagerV2 - INFO - MinIO连接成功
+2025-11-25 21:06:37,792 - AAT-Strategy - INFO - 已加载配置文件: aat_strategy_config.yaml
+2025-11-25 21:06:37,793 - AAT-Strategy - INFO - 策略引擎初始化完成，模式: performance
+2025-11-25 21:06:37,793 - AAT-Prefetcher - INFO - 语义预取器初始化完成 - 完整真实数据版本
+2025-11-25 21:06:37,793 - AAT-Compression - INFO - 压缩管理器初始化，默认算法: gzip
+2025-11-25 21:06:37,793 - AAT-ModelLoader - INFO - 已加载模型配置: ./real_model_data/config.json
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: embedding - 15891068 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: encoder_layer_0 - 787728 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: encoder_layer_1 - 787728 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: pooler - 65557 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: classifier - 1045 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 发现真实模型文件: lm_head - 15814948 bytes
+2025-11-25 21:06:37,794 - AAT-ModelLoader - INFO - 真实模型数据加载器初始化完成，发现 6 个张量文件
+2025-11-25 21:06:37,800 - AAT-StorageManagerV2 - INFO - AAT智能存储管理器V2初始化完成 - 真实模型: 6层, 总大小: 31.80MB, 全部真实数据: True
+2025-11-25 21:06:37,801 - AAT-Final-Test - INFO - 真实模型统计: {'total_layers': 6, 'total_size': 33348074, 'total_size_mb': 31.80320167541504, 'average_layer_size': 5558012.333333333, 'cache_hit_rate': 0, 'cache_stats': {'hits': 0, 'misses': 0}, 'layers': ['embedding', 'encoder_layer_0', 'encoder_layer_1', 'pooler', 'classifier', 'lm_head'], 'all_real_data': True}
+🚀 AAT-TS 智能存储系统 - 综合性能测试
+============================================================
+
+============================================================
+场景1: 在线推理服务测试（真实模型数据）
+============================================================
+📊 真实模型: 6 层, 总大小: 31.80 MB
+2025-11-25 21:06:37,806 - AAT-StorageManagerV2 - INFO - Redis连接成功
+2025-11-25 21:06:37,811 - AAT-StorageManagerV2 - INFO - MinIO连接成功
+2025-11-25 21:06:37,815 - AAT-Strategy - INFO - 已加载配置文件: aat_strategy_config.yaml
+2025-11-25 21:06:37,815 - AAT-Strategy - INFO - 策略引擎初始化完成，模式: performance
+2025-11-25 21:06:37,816 - AAT-Prefetcher - INFO - 语义预取器初始化完成 - 完整真实数据版本
+2025-11-25 21:06:37,816 - AAT-Compression - INFO - 压缩管理器初始化，默认算法: gzip
+2025-11-25 21:06:37,816 - AAT-ModelLoader - INFO - 已加载模型配置: ./real_model_data/config.json
+2025-11-25 21:06:37,816 - AAT-ModelLoader - INFO - 发现真实模型文件: embedding - 15891068 bytes
+2025-11-25 21:06:37,816 - AAT-ModelLoader - INFO - 发现真实模型文件: encoder_layer_0 - 787728 bytes
+2025-11-25 21:06:37,817 - AAT-ModelLoader - INFO - 发现真实模型文件: encoder_layer_1 - 787728 bytes
+2025-11-25 21:06:37,817 - AAT-ModelLoader - INFO - 发现真实模型文件: pooler - 65557 bytes
+2025-11-25 21:06:37,817 - AAT-ModelLoader - INFO - 发现真实模型文件: classifier - 1045 bytes
+2025-11-25 21:06:37,817 - AAT-ModelLoader - INFO - 发现真实模型文件: lm_head - 15814948 bytes
+2025-11-25 21:06:37,817 - AAT-ModelLoader - INFO - 真实模型数据加载器初始化完成，发现 6 个张量文件
+2025-11-25 21:06:37,823 - AAT-StorageManagerV2 - INFO - AAT智能存储管理器V2初始化完成 - 真实模型: 6层, 总大小: 31.80MB, 全部真实数据: True
+2025-11-25 21:06:37,823 - AAT-Strategy - INFO - 性能统计已重置
+2025-11-25 21:06:37,823 - AAT-Prefetcher - INFO - 预取统计和模式已重置
+
+推理模式 1: embedding.bin -> layer0.bin -> output.bin
+  语义映射: embedding -> encoder_layer_0 -> lm_head
+2025-11-25 21:06:38,374 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: embedding.bin -> embedding (15891068 bytes)
+2025-11-25 21:06:38,375 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: embedding.bin
+2025-11-25 21:06:39,552 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: embedding.bin
+2025-11-25 21:06:39,553 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+2025-11-25 21:06:39,567 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer1.bin -> encoder_layer_1 (787728 bytes)
+2025-11-25 21:06:39,568 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer0.bin -> encoder_layer_0 (787728 bytes)
+2025-11-25 21:06:39,576 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:39,578 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer0.bin -> encoder_layer_0 (787728 bytes)
+2025-11-25 21:06:39,578 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: layer0.bin
+2025-11-25 21:06:39,637 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer0.bin
+2025-11-25 21:06:39,637 - AAT-Prefetcher - INFO - ✅ 语义预取完成: layer0.bin (787728 bytes)
+2025-11-25 21:06:39,640 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer1.bin
+2025-11-25 21:06:39,640 - AAT-Prefetcher - INFO - ✅ 语义预取完成: layer1.bin (787728 bytes)
+2025-11-25 21:06:39,654 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer0.bin
+2025-11-25 21:06:39,654 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['layer1.bin']
+2025-11-25 21:06:39,712 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: output.bin -> lm_head (15814948 bytes)
+2025-11-25 21:06:39,712 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: output.bin
+2025-11-25 21:06:40,886 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: output.bin
+2025-11-25 21:06:40,894 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> []
+2025-11-25 21:06:41,193 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: embedding.bin (预取: False)
+2025-11-25 21:06:41,193 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+2025-11-25 21:06:41,211 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:41,226 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer0.bin (预取: True)
+2025-11-25 21:06:41,226 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['layer1.bin']
+2025-11-25 21:06:41,507 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: output.bin (预取: False)
+2025-11-25 21:06:41,507 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> []
+  冷启动平均: 0.841756s (真实数据: 100.0%)
+  热缓存平均: 0.192608s
+  性能提升: 4.37x
+  预取命中率: 16.7%
+  热层命中率: 50.0%
+  数据来源: ['真实模型', '真实模型', '真实模型']
+
+推理模式 2: embedding.bin -> layer0.bin -> layer1.bin -> output.bin
+  语义映射: embedding -> encoder_layer_0 -> encoder_layer_1 -> lm_head
+2025-11-25 21:06:42,040 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: embedding.bin -> embedding (15891068 bytes)
+2025-11-25 21:06:42,040 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: embedding.bin
+2025-11-25 21:06:43,215 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: embedding.bin
+2025-11-25 21:06:43,221 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+2025-11-25 21:06:43,222 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer0.bin -> encoder_layer_0 (787728 bytes)
+2025-11-25 21:06:43,242 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:43,244 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer0.bin -> encoder_layer_0 (787728 bytes)
+2025-11-25 21:06:43,244 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: layer0.bin
+2025-11-25 21:06:43,288 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer0.bin
+2025-11-25 21:06:43,288 - AAT-Prefetcher - INFO - ✅ 语义预取完成: layer0.bin (787728 bytes)
+2025-11-25 21:06:43,312 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer0.bin
+2025-11-25 21:06:43,312 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['output.bin', 'layer1.bin']
+2025-11-25 21:06:43,314 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: output.bin -> lm_head (15814948 bytes)
+2025-11-25 21:06:43,335 - AAT-Prefetcher - INFO - 🎯 预取命中: layer1.bin
+2025-11-25 21:06:43,336 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer1.bin -> encoder_layer_1 (787728 bytes)
+2025-11-25 21:06:43,337 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: layer1.bin
+2025-11-25 21:06:43,408 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer1.bin
+2025-11-25 21:06:43,408 - AAT-Prefetcher - INFO - 预测 layer1.bin(encoder_layer_1) -> ['layer2.bin']
+2025-11-25 21:06:43,409 - AAT-ModelLoader - WARNING - 未找到层: encoder_layer_2
+2025-11-25 21:06:43,440 - AAT-Prefetcher - INFO - 🎯 预取命中: output.bin
+2025-11-25 21:06:43,461 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: output.bin -> lm_head (15814948 bytes)
+2025-11-25 21:06:43,462 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: output.bin
+2025-11-25 21:06:43,462 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer2.bin -> encoder_layer_2 (65536 bytes)
+2025-11-25 21:06:43,469 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: layer2.bin
+2025-11-25 21:06:43,470 - AAT-Prefetcher - INFO - ✅ 语义预取完成: layer2.bin (65536 bytes)
+2025-11-25 21:06:44,525 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: output.bin
+2025-11-25 21:06:44,529 - AAT-Prefetcher - INFO - ✅ 语义预取完成: output.bin (15814948 bytes)
+2025-11-25 21:06:44,627 - AAT-StorageManagerV2 - INFO - ✓ 数据缓存到热层: output.bin
+2025-11-25 21:06:44,632 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> ['embedding.bin']
+2025-11-25 21:06:44,653 - AAT-Prefetcher - INFO - 🎯 预取命中: embedding.bin
+2025-11-25 21:06:45,004 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: embedding.bin (预取: True)
+2025-11-25 21:06:45,004 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+2025-11-25 21:06:45,030 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:45,047 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer0.bin (预取: True)
+2025-11-25 21:06:45,047 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['output.bin', 'layer1.bin']
+2025-11-25 21:06:45,059 - AAT-Prefetcher - INFO - 🎯 预取命中: layer1.bin
+2025-11-25 21:06:45,088 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer1.bin (预取: True)
+2025-11-25 21:06:45,089 - AAT-Prefetcher - INFO - 预测 layer1.bin(encoder_layer_1) -> ['layer2.bin']
+2025-11-25 21:06:45,102 - AAT-Prefetcher - INFO - 🎯 预取命中: output.bin
+2025-11-25 21:06:45,444 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: output.bin (预取: True)
+2025-11-25 21:06:45,445 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> ['embedding.bin']
+  冷启动平均: 0.629927s (真实数据: 100.0%)
+  热缓存平均: 0.191288s
+  性能提升: 3.29x
+  预取命中率: 35.7%
+  热层命中率: 50.0%
+  数据来源: ['真实模型', '真实模型', '真实模型', '真实模型']
+
+📊 模式二相较于模式一的冷启动延迟降低: 25.2%
+
+============================================================
+场景2: 边缘微调场景测试（真实模型数据）
+============================================================
+2025-11-25 21:06:45,464 - AAT-Strategy - INFO - 操作模式已切换: cost_saving
+2025-11-25 21:06:45,464 - AAT-ModelLoader - WARNING - 未找到层: config
+2025-11-25 21:06:45,467 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: config.json -> config (1024 bytes)
+2025-11-25 21:06:45,467 - AAT-StorageManagerV2 - INFO - ✓ 真实模型数据: config.json
+2025-11-25 21:06:45,467 - AAT-Prefetcher - INFO - 预测 config.json(config) -> ['embedding.bin']
+  步骤 1: config.json - 0.003349s - 命中率: 0.47 - 来源: 真实模型
+2025-11-25 21:06:45,546 - AAT-Prefetcher - INFO - 🎯 预取命中: embedding.bin
+2025-11-25 21:06:45,811 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: embedding.bin (预取: True)
+2025-11-25 21:06:45,811 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+  步骤 2: embedding.bin - 0.277661s - 命中率: 0.50 - 来源: 真实模型
+2025-11-25 21:06:45,878 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:45,890 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer0.bin (预取: True)
+2025-11-25 21:06:45,891 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['output.bin', 'layer1.bin']
+  步骤 3: layer0.bin - 0.015690s - 命中率: 0.53 - 来源: 真实模型
+2025-11-25 21:06:45,961 - AAT-Prefetcher - INFO - 🎯 预取命中: layer1.bin
+2025-11-25 21:06:45,972 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer1.bin (预取: True)
+2025-11-25 21:06:45,972 - AAT-Prefetcher - INFO - 预测 layer1.bin(encoder_layer_1) -> ['output.bin', 'layer2.bin']
+  步骤 4: layer1.bin - 0.011960s - 命中率: 0.56 - 来源: 真实模型
+2025-11-25 21:06:46,277 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: embedding.bin (预取: False)
+2025-11-25 21:06:46,279 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+  步骤 5: embedding.bin - 0.266107s - 命中率: 0.58 - 来源: 真实模型
+2025-11-25 21:06:46,347 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:46,361 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer0.bin (预取: True)
+2025-11-25 21:06:46,361 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['output.bin', 'layer1.bin']
+  步骤 6: layer0.bin - 0.014616s - 命中率: 0.60 - 来源: 真实模型
+2025-11-25 21:06:46,412 - AAT-Prefetcher - INFO - 🎯 预取命中: layer1.bin
+2025-11-25 21:06:46,427 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer1.bin (预取: True)
+2025-11-25 21:06:46,428 - AAT-Prefetcher - INFO - 预测 layer1.bin(encoder_layer_1) -> ['output.bin', 'layer2.bin']
+  步骤 7: layer1.bin - 0.015904s - 命中率: 0.62 - 来源: 真实模型
+2025-11-25 21:06:46,483 - AAT-Prefetcher - INFO - 🎯 预取命中: output.bin
+2025-11-25 21:06:46,855 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: output.bin (预取: True)
+2025-11-25 21:06:46,856 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> ['embedding.bin']
+  步骤 8: output.bin - 0.381103s - 命中率: 0.64 - 来源: 真实模型
+
+📊 边缘微调场景结果:
+  策略模式: Cost-Saving
+  预取命中率: 50.0%
+  延迟极差: 0.377754s
+  最大延迟: 0.381103s
+  最小延迟: 0.003349s
+
+============================================================
+场景3: 科研环境模型版本管理
+============================================================
+2025-11-25 21:06:46,967 - AAT-Strategy - INFO - 操作模式已切换: balanced
+2025-11-25 21:06:46,967 - AAT-Prefetcher - INFO - 🎯 预取命中: embedding.bin
+2025-11-25 21:06:47,250 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: embedding.bin (预取: True)
+2025-11-25 21:06:47,251 - AAT-Prefetcher - INFO - 预测 embedding.bin(embedding) -> ['layer0.bin', 'layer1.bin']
+  模型层 embedding.bin: 0.291606s, 大小: 1048576 bytes, 来源: 真实模型
+2025-11-25 21:06:47,367 - AAT-Prefetcher - INFO - 🎯 预取命中: layer0.bin
+2025-11-25 21:06:47,382 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer0.bin (预取: True)
+2025-11-25 21:06:47,382 - AAT-Prefetcher - INFO - 预测 layer0.bin(encoder_layer_0) -> ['output.bin', 'layer1.bin']
+  模型层 layer0.bin: 0.017040s, 大小: 787728 bytes, 来源: 真实模型
+2025-11-25 21:06:47,491 - AAT-Prefetcher - INFO - 🎯 预取命中: layer1.bin
+2025-11-25 21:06:47,503 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: layer1.bin (预取: True)
+2025-11-25 21:06:47,504 - AAT-Prefetcher - INFO - 预测 layer1.bin(encoder_layer_1) -> ['output.bin', 'layer2.bin']
+  模型层 layer1.bin: 0.013383s, 大小: 787728 bytes, 来源: 真实模型
+2025-11-25 21:06:47,610 - AAT-Prefetcher - INFO - 🎯 预取命中: output.bin
+2025-11-25 21:06:47,874 - AAT-StorageManagerV2 - INFO - ✓ 热层命中: output.bin (预取: True)
+2025-11-25 21:06:47,875 - AAT-Prefetcher - INFO - 预测 output.bin(lm_head) -> ['embedding.bin']
+  模型层 output.bin: 0.271549s, 大小: 1048576 bytes, 来源: 真实模型
+
+📊 科研环境场景结果:
+  策略模式: Balanced
+  预取命中率: 57.7%
+  稳定阶段平均延迟: 0.015211s
+  稳定阶段延迟极差: 0.003656s
+  稳定阶段延迟标准差: 0.001828s
+
+============================================================
+压缩效率测试
+============================================================
+2025-11-25 21:06:47,990 - AAT-Compression - INFO - 压缩管理器初始化，默认算法: gzip
+2025-11-25 21:06:47,990 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: embedding.bin -> embedding (15891068 bytes)
+  ✓ embedding.bin: 15,891,068 → 14,739,423 bytes (节省 7.2%, 算法: gzip)
+2025-11-25 21:06:49,356 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer0.bin -> encoder_layer_0 (787728 bytes)
+  ✓ layer0.bin: 787,728 → 729,689 bytes (节省 7.4%, 算法: gzip)
+2025-11-25 21:06:49,425 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: layer1.bin -> encoder_layer_1 (787728 bytes)
+  ✓ layer1.bin: 787,728 → 729,575 bytes (节省 7.4%, 算法: gzip)
+2025-11-25 21:06:49,492 - AAT-StorageManagerV2 - INFO - ✓ 从真实模型加载: output.bin -> lm_head (15814948 bytes)
+  ✓ output.bin: 15,814,948 → 14,556,315 bytes (节省 8.0%, 算法: gzip)
+
+📊 压缩效率统计:
+  平均压缩效率: 7.5%
+  最大空间节省率: 8.0%
+
+============================================================
+生成可视化测试报告
+============================================================
+✓ 性能测试报告已保存: aat_performance_report_20251125_210651.png
+✓ 技术HTML报告已生成: aat_technical_report_20251125_210651.html
+✓ 详细结果已保存: aat_detailed_results_20251125_210652.json
+
+🎉 测试完成! ==================================================
+总测试时间: 14.92 秒
+性能报告: aat_performance_report_20251125_210651.png
+详细结果: aat_detailed_results_20251125_210652.json
+==================================================
+
+📊 关键性能指标:
+  总请求数: 26
+  热层命中率: 69.2%
+  预取命中率: 57.7%
+  真实模型: 6 层, 31.80 MB
+  真实数据覆盖率: 100%
+
+✅ 所有测试完成！系统性能验证成功！
+(venv) lhl@lihanlin:~/aat-ts-project$ python simple_server_final.py
+📁 找到以下测试报告:
+  📊 性能图表报告:
+     aat_performance_report_20251125_210651.png - 2025-11-25 21:06:52
+     aat_performance_report_20251125_210042.png - 2025-11-25 21:00:44
+  🔬 技术分析报告:
+     aat_technical_report_20251125_210651.html - 2025-11-25 21:06:52
+     aat_technical_report_20251125_210042.html - 2025-11-25 21:00:44
+  📁 详细数据报告:
+     aat_detailed_results_20251125_210652.json - 2025-11-25 21:06:52
+     aat_detailed_results_20251125_210044.json - 2025-11-25 21:00:44
+============================================================
+🌐 AAT-TS 测试报告服务器已启动!
+📍 服务器地址: http://localhost:8080
+📊 报告面板: http://localhost:8080/aat_reports_dashboard.html
+============================================================
+💡 请在浏览器中手动打开以上地址查看报告
+🛑 按 Ctrl+C 停止服务器
